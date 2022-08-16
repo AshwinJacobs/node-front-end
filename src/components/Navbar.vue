@@ -47,6 +47,9 @@
           <li>
             <router-link class="link" to="/about">About</router-link>
           </li>
+          <li>
+            <router-link class="link" to="/products">Products</router-link>
+          </li>
           <div v-if="!User">
             <li>
               <router-link class="link" to="/login">Login</router-link>

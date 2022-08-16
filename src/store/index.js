@@ -84,7 +84,6 @@ export default createStore({
         });
     },
     loginUser(context, payload) {
-      console.log("working");
       console.log(payload);
       fetch("https://c420a-node.herokuapp.com/users/login", {
         method: "POST",
