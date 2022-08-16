@@ -1,6 +1,6 @@
 <template>
-  <div v-if="small" class="smallLoader mx-auto"></div>
-  <div v-else class="loader mx-auto"></div>
+  <div v-if="small" class="smallLoader "></div>
+  <div v-else class="loader "></div>
 </template>
 
 <script>

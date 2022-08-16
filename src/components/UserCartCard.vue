@@ -1,6 +1,6 @@
 <template>
     <div class="col-md-6">
-        <img :src="product.prodUrl" @click="removeProduct" :id="`userProd`+product.id" class="userCart img-fluid">
+        <img :src="product.prodimage" @click="removeProduct" :id="`userProd`+product.id" class="userCart img-fluid">
     </div>
 
 </template>

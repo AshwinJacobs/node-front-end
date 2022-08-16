@@ -55,34 +55,35 @@ export default createStore({
     },
   },
   actions: {
-    async getProducts(context) {
-      fetch("https://c420a-node.herokuapp.com/products")
-        .then((res) => res.json())
-        .then((data) => context.commit("setProducts", data.results));
+    logout: async (context) => {
+      context.commit("setusers", null);
+      window.location = "/login";
     },
-    async getSingleProduct(context, payload) {
-      fetch("https://c420a-node.herokuapp.com/products" + payload)
-        .then((res) => res.json())
-        .then((data) => context.commit("setSingleProduct", data.results[0]));
+    login: async (context, data) => {
+      const { email, password } = data;
+      const response = await fetch(
+        `https://c420a-node.herokuapp.com/users?email=${email}&password=${password}`
+      );
+      const usersData = await response.json();
+      context.commit("setusers", usersData[0]);
+      router.push("/products");
     },
-    async registerUser(context, data) {
-      fetch("https://c420a-node.herokuapp.com/users/register", {
+    register: async (context, data) => {
+      const { FullName, email, password } = data;
+      fetch("https://c420a-node.herokuapp.com/users", {
         method: "POST",
-        body: JSON.stringify(data),
+        body: JSON.stringify({
+          FullName: FullName,
+          email: email,
+          password: password,
+        }),
         headers: {
           "Content-type": "application/json; charset=UTF-8",
         },
       })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.results) {
-            context.commit("setRegisterComplete");
-            context.dispatch("loginUser", payload);
-          } else {
-            context.commit("setRegisterError", data.result);
-          }
-        });
-    },
+      .then((response) => response.json())
+      .then((json) => context.commit("setusers", json));
+  },
     loginUser(context, payload) {
       console.log(payload);
       fetch("https://c420a-node.herokuapp.com/users/login", {

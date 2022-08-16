@@ -57,8 +57,8 @@
       </div>
       <div v-if="clicked && !currentUser">
         <div v-if="!user && !loginError">
-          <p class="p-0 mx-0 mt-1 mb-4">Checking...</p>
-          <Loader :small="true" />
+
+     
         </div>
         <div v-if="loginError">
           <p class="p-0 mx-0 mt-1 mb-4">{{ loginError }}</p>

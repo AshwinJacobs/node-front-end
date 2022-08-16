@@ -29,11 +29,16 @@
             <div>
               <ul class="list-inline">
                 <li class="list-inline-item">
-                  <i class="fab fa-github text-white"></i>
-                </li>
+                  <a href="https://github.com/AshwinJacobs" target="blank"
+                      ><i class="fab fa-github text-white"></i
+                    ></a></li>
                 <li class="list-inline-item">
-                  <i class="fab fa-linkedin-in text-white"></i>
-                </li>
+                  <a
+                      href="https://www.linkedin.com/in/ashwin-dean-0956b0199/"
+                      target="blank"
+                      ><i class="fab fa-linkedin-in text-white"> </i
+                    ></a>
+                  </li>
               </ul>
             </div>
           </div>

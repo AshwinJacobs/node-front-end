@@ -1,21 +1,23 @@
 <template>
   <header :class="{ 'scrolled-nav': scrollPosition }">
     <nav class="branding">
-      <h1 class="cash">STORE</h1>
+        <h1 class="cash">STORE</h1>
       <ul v-show="!mobile" class="navigation">
         <!-- <li>
           <router-link class="link" to="/">Home</router-link>
         </li> -->
-
+        
+  
         <li>
-          <router-link class="link" to="/">Home</router-link>
+          <router-link class="link" to="/home">Home</router-link>
         </li>
         <li>
           <router-link class="link" to="/about">About</router-link>
         </li>
-
+     
         <div v-if="!User">
           <li>
+           
             <router-link class="link" to="/register">Register</router-link>
           </li>
         </div>
@@ -37,7 +39,7 @@
       </div>
       <transition name="mobile-nav">
         <ul v-show="mobileNav" class="dropdown-nav">
-          <h1 class="cash"></h1>
+          <h1 class="cash"> C-A-S-H   EVENTS</h1>
           <!-- <li>
             <router-link class="link" to="/">Home</router-link>
           </li> -->
@@ -47,9 +49,7 @@
           <li>
             <router-link class="link" to="/about">About</router-link>
           </li>
-          <li>
-            <router-link class="link" to="/products">Products</router-link>
-          </li>
+          
           <div v-if="!User">
             <li>
               <router-link class="link" to="/login">Login</router-link>
@@ -81,9 +81,6 @@ export default {
   computed: {
     User() {
       return store.state.users;
-    },
-    cart() {
-      return this.$store.state.cart;
     },
   },
   created() {
@@ -178,7 +175,7 @@ li {
   margin-top: 10px;
 }
 
-.cash {
+.cash{
   font-size: 16px;
   font-weight: 500;
   padding-left: 10px;
@@ -213,7 +210,7 @@ icon-active {
 }
 
 .mobile-nav-enter-from,
-.mobile-nav-leave-to {
+.mobile-nav-leave-to{
   transform: translateX(-250px);
 }
 

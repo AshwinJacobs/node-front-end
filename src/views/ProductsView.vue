@@ -1,59 +1,49 @@
 <template>
-  <div id="main" v-if="products" class="container d-flex justify-content-center align-items-center flex-column">
-    <div class="row">
-      <Cards
-        v-for="product in products"
-        :key="product.id"
-        :product="product"
-      />
-    </div>
-  </div>
-  <div v-else id="main" class="d-flex justify-content-center align-items-center flex-column">
-    <Loader />
+  <input class="SB" type="text" v-model="search" placeholder="Search by Public/Private products" />
+  <div class="row">
+    <products
+      v-for="product in filteredproducts"
+      :key="product.id"
+      :product="product"
+    />
   </div>
 </template>
-
 <script>
-import Cards from "../components/Cards.vue";
-import Loader from '../components/Loader.vue';
-
+import products from "../components/products.vue";
 export default {
-  components: {
-    Cards, Loader
-  },
-  mounted() {
-    this.$store.dispatch("getProducts");
-    this.$store.dispatch("clearSingleProduct");
+  components: { products },
+  data() {
+    return {
+      search: "",
+      products: [],
+    };
   },
   computed: {
-    products() {
-      return this.$store.state.products;
+    filteredproducts() {
+      return this.$store.state.products?.filter((product) => {
+        return product.Type?.toLowerCase().includes(this.search.toLowerCase());
+      });
     },
+  },
+  mounted() {
+    this.$store.dispatch("getproducts");
   },
 };
 </script>
-
 <style scoped>
-#main {
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  height: 100%;
-  color: rgb(253, 244, 244);
-  padding-top:100px;
+.row {
+  margin-top: 10px;
 }
-
-#registerzone {
-  padding: 50px 0 0 0;
-}
-
-#cardzone {
-  padding: 40px 50px 40px 50px;
-}
-
-.card,
-.btn,
-input {
-  border-radius: 0;
+.SB {
+  margin-top: 53px;
+  margin-left: 42vw;
+  font-size: 21px;
+  border: 0;
+  outline:0;
+  border-bottom: 2px solid black;
+  width: 18%;
+  font-size: 20px;
+  background: transparent;
+  color: black;
 }
 </style>

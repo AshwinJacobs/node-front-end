@@ -11,7 +11,7 @@
           <div class="card-body text-white">
             <form method="POST" @submit="registerUser">
               <div class="row mb-3">
-                <div class="col-6">
+                <div >
                   <label for="firstName" class="form-label">First Name</label>
                   <input
                     @input="clearClick"
@@ -21,7 +21,7 @@
                     name="firstName"
                   />
                 </div>
-                <div class="col-6">
+                <!-- <div class="col-6">
                   <label for="lastName" class="form-label">Last Name</label>
                   <input
                     @input="clearClick"
@@ -30,7 +30,7 @@
                     class="form-control"
                     name="lastName"
                   />
-                </div>
+                </div> -->
               </div>
 
               <div class="mb-3">
@@ -108,7 +108,6 @@ export default {
   data() {
     return {
       clicked: false,
-      firstName: null,
       address: null,
       cart: null,
       phoneNumber: null,
